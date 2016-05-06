@@ -24,6 +24,7 @@ namespace DogRaceLab
             {
                 return Amount;
             }
+           // return 0;
             else
             {
                 return -Amount;

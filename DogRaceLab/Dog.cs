@@ -16,7 +16,6 @@ namespace DogRaceLab
         public int Location = 0;
         public Random Randomizer; // = new Random();
 
-
         public Dog()
         {
             Randomizer = new Random();

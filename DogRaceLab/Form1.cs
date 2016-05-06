@@ -12,30 +12,23 @@ namespace DogRaceLab
 {
     public partial class Form1 : Form
     {
+        Dog[] dogArray = new Dog[4];
+        Guy[] guyArray = new Guy[3];
+
         public Form1()
         {
             InitializeComponent();
             InitializeGuys();
         }
 
-        Dog[] dogArray = new Dog[4];
-        Guy[] guyArray = new Guy[3];
-
-
         private void btnRace_Click(object sender, EventArgs e)
         {
-
             PlaceDogOnStart();
             timer1.Start();
         }
 
         private void InitializeGuys()
         {
-            foreach (Guy guy in guyArray)
-            {
-             //   guy.ClearBet();
-            }
-
             guyArray[0] = new Guy()
             {
                 Name = "Joe",
@@ -55,7 +48,6 @@ namespace DogRaceLab
                 MyRadioButton = rbBob
             };
             guyArray[1].UpdateLabels();
-
 
             guyArray[2] = new Guy()
             {
@@ -115,7 +107,6 @@ namespace DogRaceLab
             }
         }
 
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             for (int i = 0; i < dogArray.Length; i++)
@@ -130,15 +121,11 @@ namespace DogRaceLab
 
                     for (int j = 0; j < guyArray.Length; j++)
                     {
-                        //if (guyArray[j].MyBet.Dog == i+1)
-                        //{
-                        //    guyArray[j].Collect(i+1);
-                        //}
                         if (guyArray[j].MyBet != null)
                         {
                             guyArray[j].Collect(i + 1);
                         }
-                    }       
+                    }
 
                     foreach (Dog dog in dogArray)
                     {
@@ -146,7 +133,6 @@ namespace DogRaceLab
                     }
                     break;
                 }
-
             }
         }
 
@@ -154,16 +140,30 @@ namespace DogRaceLab
         {
             if (rbJoe.Checked)
             {
-                guyArray[0].PlaceBet((int)nrDolar.Value, (int)nrDog.Value);
+                if (!CanCurrentGuyPlaceBet(0))
+                {
+                    MessageBox.Show("There are insufficient funds");
+                }
             }
             else if (rbBob.Checked)
             {
-                guyArray[1].PlaceBet((int)nrDolar.Value, (int)nrDog.Value);
+                if (!CanCurrentGuyPlaceBet(1))
+                {
+                    MessageBox.Show("There are insufficient funds");
+                }
             }
             else if (rbAl.Checked)
             {
-                guyArray[2].PlaceBet((int)nrDolar.Value, (int)nrDog.Value);
+                if (!CanCurrentGuyPlaceBet(2))
+                {
+                    MessageBox.Show("There are insufficient funds");
+                }
             }
+        }
+
+        private bool CanCurrentGuyPlaceBet(int guyNr)
+        {
+            return guyArray[guyNr].PlaceBet((int)nrDolar.Value, (int)nrDog.Value);
         }
 
         private void rbJoe_CheckedChanged(object sender, EventArgs e)

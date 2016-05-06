@@ -39,15 +39,20 @@ namespace DogRaceLab
         {
             if (this.Cash >= BetAmount && MyBet == null)
             {
+                //nowy zaklad i przypisanie zmiennych 
                 MyBet = new Bet();
                 MyBet.Amount = BetAmount;
                 MyBet.Dog = DogToWin;
                 MyBet.Bettor = this;
 
-                this.Cash -= BetAmount;
+                //zmienjszenie gotowki wydanej na zaklad u gracza
+                //this.Cash -= BetAmount;
+
+                //zmiana opisu label (gracz postawil na konkretnego psa)
                 MyLabel.Text = MyBet.GetDescription();
                 //MessageBox.Show(MyBet.GetDescription());
-                UpdateLabels();
+
+                //UpdateLabels();
 
                 return true;
             }
@@ -55,7 +60,6 @@ namespace DogRaceLab
             {
                 return false;
             }
-            
         }
 
         public void Collect(int Winner)
