@@ -15,34 +15,61 @@ namespace DogRaceLab
         public Form1()
         {
             InitializeComponent();
+            InitializeGuys();
         }
 
         Dog[] dogArray = new Dog[4];
+        Guy[] guyArray = new Guy[3];
+
 
         private void btnRace_Click(object sender, EventArgs e)
         {
+
             PlaceDogOnStart();
             timer1.Start();
         }
 
-       
+        private void InitializeGuys()
+        {
+            foreach (Guy guy in guyArray)
+            {
+             //   guy.ClearBet();
+            }
+
+            guyArray[0] = new Guy()
+            {
+                Name = "Joe",
+                MyBet = null,
+                Cash = 50,
+                MyLabel = lbJoe,
+                MyRadioButton = rbJoe
+            };
+            guyArray[0].UpdateLabels();
+
+            guyArray[1] = new Guy()
+            {
+                Name = "Bob",
+                MyBet = null,
+                Cash = 75,
+                MyLabel = lbBob,
+                MyRadioButton = rbBob
+            };
+            guyArray[1].UpdateLabels();
+
+
+            guyArray[2] = new Guy()
+            {
+                Name = "Al",
+                MyBet = null,
+                Cash = 45,
+                MyLabel = lbAl,
+                MyRadioButton = rbAl
+            };
+            guyArray[2].UpdateLabels();
+        }
 
         private void PlaceDogOnStart()
         {
-
-            Dog piesek = new Dog();
-            piesek.Name = "Poppers";
-            textBox1.Text = piesek.Name;
-
-
-            Dog piesek2 = new Dog();
-            piesek2.Name = "Azor";
-            textBox1.Text +=  ", "  + piesek2.Name;
-
-            piesek.ZarabianieKasy(500);
-            textBox1.Text += ", " + piesek.kaska;
-
-
             if (dogArray[0] == null)
             {
                 dogArray[0] = new Dog()
@@ -91,20 +118,27 @@ namespace DogRaceLab
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //bool stillRunning = false;
-            //int whoWon = 0;
-            //  int distance = 0;
             for (int i = 0; i < dogArray.Length; i++)
             {
-                //  textBox1.Text += "_" + i + ":" + dogArray[i].Location + ", ";
-                //stillRunning = dogArray[i].Run();
                 if (dogArray[i].Run())
                 {
                     timer1.Stop();
                     //  var distance = dogArray.Max(x => x.Location);
                     // var doggy = dogArray.FirstOrDefault(x => x.Location == distance);
                     // MessageBox.Show(string.Format("Dog {0} won! Distance {1}", doggy.Name, distance)); //dogArray.Max().Location
-                    MessageBox.Show(string.Format("Dog {0} won! Distance {1}", dogArray[i].Name, dogArray[i].Location)); //dogArray.Max().Location
+                    MessageBox.Show(string.Format("Dog {0} won!", dogArray[i].Name)); //dogArray.Max().Location
+
+                    for (int j = 0; j < guyArray.Length; j++)
+                    {
+                        //if (guyArray[j].MyBet.Dog == i+1)
+                        //{
+                        //    guyArray[j].Collect(i+1);
+                        //}
+                        if (guyArray[j].MyBet != null)
+                        {
+                            guyArray[j].Collect(i + 1);
+                        }
+                    }       
 
                     foreach (Dog dog in dogArray)
                     {
@@ -114,9 +148,37 @@ namespace DogRaceLab
                 }
 
             }
+        }
 
+        private void btnBet_Click(object sender, EventArgs e)
+        {
+            if (rbJoe.Checked)
+            {
+                guyArray[0].PlaceBet((int)nrDolar.Value, (int)nrDog.Value);
+            }
+            else if (rbBob.Checked)
+            {
+                guyArray[1].PlaceBet((int)nrDolar.Value, (int)nrDog.Value);
+            }
+            else if (rbAl.Checked)
+            {
+                guyArray[2].PlaceBet((int)nrDolar.Value, (int)nrDog.Value);
+            }
+        }
 
+        private void rbJoe_CheckedChanged(object sender, EventArgs e)
+        {
+            lbName.Text = "Joe";
+        }
 
+        private void rbBob_CheckedChanged(object sender, EventArgs e)
+        {
+            lbName.Text = "Bob";
+        }
+
+        private void rbAl_CheckedChanged(object sender, EventArgs e)
+        {
+            lbName.Text = "Al";
         }
     }
 }

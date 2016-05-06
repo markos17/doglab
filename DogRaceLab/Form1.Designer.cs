@@ -36,12 +36,26 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btnRace = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.rbJoe = new System.Windows.Forms.RadioButton();
+            this.rbBob = new System.Windows.Forms.RadioButton();
+            this.rbAl = new System.Windows.Forms.RadioButton();
+            this.lbMinimumBet = new System.Windows.Forms.Label();
+            this.lbName = new System.Windows.Forms.Label();
+            this.btnBet = new System.Windows.Forms.Button();
+            this.nrDolar = new System.Windows.Forms.NumericUpDown();
+            this.lbBucksOnDog = new System.Windows.Forms.Label();
+            this.nrDog = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lbJoe = new System.Windows.Forms.Label();
+            this.lbBob = new System.Windows.Forms.Label();
+            this.lbAl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.racetrackPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nrDolar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nrDog)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -91,7 +105,7 @@
             // 
             // btnRace
             // 
-            this.btnRace.Location = new System.Drawing.Point(498, 232);
+            this.btnRace.Location = new System.Drawing.Point(465, 256);
             this.btnRace.Name = "btnRace";
             this.btnRace.Size = new System.Drawing.Size(89, 44);
             this.btnRace.TabIndex = 5;
@@ -104,21 +118,173 @@
             this.timer1.Interval = 5;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // textBox1
+            // rbJoe
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 223);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(442, 53);
-            this.textBox1.TabIndex = 7;
+            this.rbJoe.AutoSize = true;
+            this.rbJoe.Checked = true;
+            this.rbJoe.Location = new System.Drawing.Point(8, 246);
+            this.rbJoe.Name = "rbJoe";
+            this.rbJoe.Size = new System.Drawing.Size(109, 17);
+            this.rbJoe.TabIndex = 6;
+            this.rbJoe.TabStop = true;
+            this.rbJoe.Text = "Joe has 50 bucks";
+            this.rbJoe.UseVisualStyleBackColor = true;
+            this.rbJoe.CheckedChanged += new System.EventHandler(this.rbJoe_CheckedChanged);
+            // 
+            // rbBob
+            // 
+            this.rbBob.AutoSize = true;
+            this.rbBob.Location = new System.Drawing.Point(8, 270);
+            this.rbBob.Name = "rbBob";
+            this.rbBob.Size = new System.Drawing.Size(114, 17);
+            this.rbBob.TabIndex = 7;
+            this.rbBob.Text = "Bob  has 75 bucks";
+            this.rbBob.UseVisualStyleBackColor = true;
+            this.rbBob.CheckedChanged += new System.EventHandler(this.rbBob_CheckedChanged);
+            // 
+            // rbAl
+            // 
+            this.rbAl.AutoSize = true;
+            this.rbAl.Location = new System.Drawing.Point(8, 294);
+            this.rbAl.Name = "rbAl";
+            this.rbAl.Size = new System.Drawing.Size(104, 17);
+            this.rbAl.TabIndex = 8;
+            this.rbAl.Text = "Al  has 45 bucks";
+            this.rbAl.UseVisualStyleBackColor = true;
+            this.rbAl.CheckedChanged += new System.EventHandler(this.rbAl_CheckedChanged);
+            // 
+            // lbMinimumBet
+            // 
+            this.lbMinimumBet.AutoSize = true;
+            this.lbMinimumBet.Location = new System.Drawing.Point(12, 224);
+            this.lbMinimumBet.Name = "lbMinimumBet";
+            this.lbMinimumBet.Size = new System.Drawing.Size(110, 13);
+            this.lbMinimumBet.TabIndex = 9;
+            this.lbMinimumBet.Text = "Minimum bet: 5 bucks";
+            // 
+            // lbName
+            // 
+            this.lbName.AutoSize = true;
+            this.lbName.Location = new System.Drawing.Point(12, 331);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(24, 13);
+            this.lbName.TabIndex = 10;
+            this.lbName.Text = "Joe";
+            // 
+            // btnBet
+            // 
+            this.btnBet.Location = new System.Drawing.Point(42, 326);
+            this.btnBet.Name = "btnBet";
+            this.btnBet.Size = new System.Drawing.Size(58, 23);
+            this.btnBet.TabIndex = 11;
+            this.btnBet.Text = "Bets";
+            this.btnBet.UseVisualStyleBackColor = true;
+            this.btnBet.Click += new System.EventHandler(this.btnBet_Click);
+            // 
+            // nrDolar
+            // 
+            this.nrDolar.Location = new System.Drawing.Point(116, 329);
+            this.nrDolar.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.nrDolar.Name = "nrDolar";
+            this.nrDolar.Size = new System.Drawing.Size(54, 20);
+            this.nrDolar.TabIndex = 12;
+            this.nrDolar.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // lbBucksOnDog
+            // 
+            this.lbBucksOnDog.AutoSize = true;
+            this.lbBucksOnDog.Location = new System.Drawing.Point(176, 331);
+            this.lbBucksOnDog.Name = "lbBucksOnDog";
+            this.lbBucksOnDog.Size = new System.Drawing.Size(110, 13);
+            this.lbBucksOnDog.TabIndex = 13;
+            this.lbBucksOnDog.Text = "bucks on dog number";
+            // 
+            // nrDog
+            // 
+            this.nrDog.Location = new System.Drawing.Point(292, 329);
+            this.nrDog.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.nrDog.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nrDog.Name = "nrDog";
+            this.nrDog.Size = new System.Drawing.Size(54, 20);
+            this.nrDog.TabIndex = 14;
+            this.nrDog.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label4
+            // 
+            this.label4.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.Location = new System.Drawing.Point(217, 224);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(32, 13);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Bets";
+            // 
+            // lbJoe
+            // 
+            this.lbJoe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbJoe.Location = new System.Drawing.Point(220, 246);
+            this.lbJoe.Name = "lbJoe";
+            this.lbJoe.Size = new System.Drawing.Size(150, 15);
+            this.lbJoe.TabIndex = 16;
+            this.lbJoe.Text = "Joe hasn\'t placed a bet";
+            // 
+            // lbBob
+            // 
+            this.lbBob.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbBob.Location = new System.Drawing.Point(220, 271);
+            this.lbBob.Name = "lbBob";
+            this.lbBob.Size = new System.Drawing.Size(150, 15);
+            this.lbBob.TabIndex = 17;
+            this.lbBob.Text = "Bob hasn\'t placed a bet";
+            // 
+            // lbAl
+            // 
+            this.lbAl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbAl.Location = new System.Drawing.Point(220, 296);
+            this.lbAl.Name = "lbAl";
+            this.lbAl.Size = new System.Drawing.Size(150, 15);
+            this.lbAl.TabIndex = 18;
+            this.lbAl.Text = "Al hasn\'t placed a bet";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(619, 302);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(619, 371);
+            this.Controls.Add(this.lbAl);
+            this.Controls.Add(this.lbBob);
+            this.Controls.Add(this.lbJoe);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.nrDog);
+            this.Controls.Add(this.lbBucksOnDog);
+            this.Controls.Add(this.nrDolar);
+            this.Controls.Add(this.btnBet);
+            this.Controls.Add(this.lbName);
+            this.Controls.Add(this.lbMinimumBet);
+            this.Controls.Add(this.rbAl);
+            this.Controls.Add(this.rbBob);
+            this.Controls.Add(this.rbJoe);
             this.Controls.Add(this.btnRace);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
@@ -132,6 +298,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nrDolar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nrDog)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,7 +314,19 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Button btnRace;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.RadioButton rbJoe;
+        private System.Windows.Forms.RadioButton rbBob;
+        private System.Windows.Forms.RadioButton rbAl;
+        private System.Windows.Forms.Label lbMinimumBet;
+        private System.Windows.Forms.Label lbName;
+        private System.Windows.Forms.Button btnBet;
+        private System.Windows.Forms.NumericUpDown nrDolar;
+        private System.Windows.Forms.Label lbBucksOnDog;
+        private System.Windows.Forms.NumericUpDown nrDog;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbJoe;
+        private System.Windows.Forms.Label lbBob;
+        private System.Windows.Forms.Label lbAl;
     }
 }
 

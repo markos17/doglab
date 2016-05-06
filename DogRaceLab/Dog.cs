@@ -15,20 +15,11 @@ namespace DogRaceLab
         public PictureBox MyPictureBox;
         public int Location = 0;
         public Random Randomizer; // = new Random();
-        public int kaska = 1000;
 
 
         public Dog()
         {
             Randomizer = new Random();
-        }
-
-
-        public string ZarabianieKasy(int Wyplata)
-        {
-            kaska += Wyplata;
-
-            return kaska.ToString();
         }
 
         public bool Run()

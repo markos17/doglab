@@ -15,12 +15,19 @@ namespace DogRaceLab
 
         public string GetDescription()
         {
-            return "";
+            return string.Format("{0} bets {1} on dog #{2}", Bettor.Name, Amount, Dog);
         }
 
         public int PayOut(int Winner)
         {
-            return 0;
+            if (Winner == Dog)
+            {
+                return Amount;
+            }
+            else
+            {
+                return -Amount;
+            }
         }
     }
 }
